@@ -5,7 +5,7 @@ DEP Enrolment Setup Screen
 
 **A Setup/ Splash screen for DEP and user initiated Jamf Pro enrollments. Designed to run post enrollmnet. This is a templete and although it does work as is you are most likley going to need make changes to better suit your requirements and enviromet.**
 
-sreenshot to be added
+![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)
 
 ### Requirements
 
@@ -20,7 +20,7 @@ In the below documentation there will be refrences to line numbers within Xcode.
 
 ### App Structure  
 
-Screenshot to be added  
+![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/structure.png?raw=true)  
 
 ### Editing in Xcode
 
@@ -28,7 +28,7 @@ Screenshot to be added
 
 Download and open the project in Xcode. The navigation pane on the left will list various files:
 
-screenshot to be added  
+![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/xcodeStructure.png?raw=true)  
 
 The main files/ folders you will be working with are:
 

@@ -13,7 +13,7 @@ Created with Xcode 8 and swift 3.0, Xcode 8 or higher needed. Wilst this may be 
 
 Tested and Support Clients:
 
-10.11 (El Capitan)
+10.11 (El Capitan)  
 10.12 (Sierra)
 
 In the below documentation there will be refrences to line numbers within Xcode. By default line numbers are not show in Xcode. To show them open Xcode Preferencs and click on the Text Editing tab, within that tab click Editing and then tick the Show Line Numbers check box.
@@ -23,6 +23,8 @@ In the below documentation there will be refrences to line numbers within Xcode.
 Screenshot to be added  
 
 ### Editing in Xcode
+
+**Im only going to list some of the basic changes that can be made, to list everything would take a lot of documentation!**  
 
 Download and open the project in Xcode. The navigation pane on the left will list various files:
 
@@ -78,7 +80,24 @@ subclass of NSViewController. Used by the SecondView
 
 Custom Policy Trigger:  
 
-Edit ```let appleScriptPolicy = NSAppleScript(source: "do shell script \"/usr/local/jamf/bin/jamf policy -event DEP \" with administrator " + "privileges")!.executeAndReturnError(nil)``` on line 86 change DEP after 'jamf policy -event' with your customer policy trigger name.  
+Edit ```let appleScriptPolicy = NSAppleScript(source: "do shell script \"/usr/local/jamf/bin/jamf policy -event DEP \" with administrator " + "privileges")!.executeAndReturnError(nil)``` on line 86 change DEP after 'jamf policy -event' with your custom policy trigger name.  
+
+Check Policy Receipt Time:  
+How often policy receipts are checked, default is 8 seconds.  
+
+Edit ```let timerInt = TimeInterval(8.0)``` on line 212 change 8.0 to amount os seconds reqiured.  
+
+##### WebViewController  
+
+subclass of NSViewController. Used by the WebView  
+
+
+##### Stop cmd + q from quting the App   
+
+We can use info.plist to make the application run as an agent. This stops is displaying in the dock or have a menu bar, which it very hard to close the app until its finished.  
+
+View info.plist and look for the 'Application is agent (UIElement)' property, change the value from NO to YES (is handy to have this set to NO while testing and debuging).  
+
 
 
 

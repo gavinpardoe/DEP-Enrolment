@@ -18,11 +18,15 @@ Tested and Support Clients:
 
 In the below documentation there will be refrences to line numbers within Xcode. By default line numbers are not show in Xcode. To show them open Xcode Preferencs and click on the Text Editing tab, within that tab click Editing and then tick the Show Line Numbers check box.
 
+### App Structure  
+
+Screenshot to be added  
+
 ### Editing in Xcode
 
 Download and open the project in Xcode. The navigation pane on the left will list various files:
 
-screenshot to be added
+screenshot to be added  
 
 The main files/ folders you will be working with are:
 
@@ -30,10 +34,51 @@ The main files/ folders you will be working with are:
 *MainWindowController* - Swift Class  
 *SourceViewController* - Swift Class  
 *SecondViewController* - Swift Class  
-*WebViewController* - Swift Class  
+*WebViewController* - Swift Class   
+*info.plist* - plist  
 
 ##### HTML  
 
 Pretty simple just remove the exiting content in the HTML Folder and drag & drop your own. In the import wizard make sure that Copy Items is checked.  
 
 This is the contect that gets displayed in the WebView. It can also display hosted HTML content such a web pages, instead of using local content.  
+
+##### MainViewController  
+
+Subclass of NSWindowContoller. Used by MainWindow in the storyboard to set window size, level and apperance.  
+
+To Change Window Size: (Note this have been designed to run using the full size of the main screen)  
+Edit ```let percent: CGFloat = 1.0``` on line 40 of MainViewController.swift, where 1.0 = 100%, 0.5 = 50%  
+
+To Change background colour:  
+Edit ```window?.backgroundColor = NSColor.white``` on line 35 of MainViewController.swift, where white = colour (Black, Blue, Red, etc)  
+
+##### SourceViewController  
+
+Subclass of NSViewController & NSTextFieldDelegate. Used by the SourceView.  
+
+Add/ remove departments:  
+Edit ```department = ["Accounts", "Design", "Marketing", "Operations", "Sales", "Service"]``` on line 48 of SourceViewController.swift, change remove the department names within the quotes. You can add more entries just make sure to comma seperate them.  
+**Note that the departments must exist within departments in your Jamf server**  
+
+Modify Text Field constraints:  
+These restrict the characters that can be typed in the text fields.  
+
+Edit ```let characterSet: CharacterSet = CharacterSet(charactersIn:     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789-_").inverted``` and ```let alphaCharSet: CharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ.").inverted```  on lines 59 & 60  
+Characters listed are allowed, anything not listed is restricted. CharaterSet applies to the Asset Tag Field and alphaCharSet applies to the Username field.  
+
+Empty Text Fields:  
+If either text field is empty the app will not continue and an error message will be displayed, this will change the message in the error.  
+Edit ```alert.messageText = "Missing Text Field Values"``` and/or ```alert.informativeText = "All Text Fields Must be Populated"```  
+Change the text within the quotes.  
+
+##### SecondViewController  
+
+subclass of NSViewController. Used by the SecondView  
+
+Custom Policy Trigger:  
+
+Edit ```let appleScriptPolicy = NSAppleScript(source: "do shell script \"/usr/local/jamf/bin/jamf policy -event DEP \" with administrator " + "privileges")!.executeAndReturnError(nil)``` on line 86 change DEP after 'jamf policy -event' with your customer policy trigger name.  
+
+
+

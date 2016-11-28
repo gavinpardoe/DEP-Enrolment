@@ -3,12 +3,12 @@ DEP Enrolment Setup Screen
 
 ### Description
 
-**A Setup/ Splash screen for DEP and user initiated Jamf Pro enrollments. Designed to run post enrollmnet. This is a templete and although it does work as is you are most likley going to need make changes to better suit your requirements and enviromet.**
+**A Setup/ Splash screen for DEP and user initiated Jamf Pro enrollments. Designed to run post enrollmnet. This is a template and although it does work as is you are most likley going to need make changes to better suit your requirements and enviroment.**
 
 ![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)
 
 ### Requirements
-
+---
 Created with Xcode 8 and swift 3.0, Xcode 8 or higher needed. Wilst this may be uable with other MDM's it was created for use with Jamf Pro, recomend being on the latest version or at least within the last 3 releases of Jamf Pro.
 
 Tested and Supported Clients:
@@ -16,14 +16,14 @@ Tested and Supported Clients:
 10.11 (El Capitan)  
 10.12 (Sierra)
 
-In the below documentation there will be refrences to line numbers within Xcode. By default line numbers are not show in Xcode. To show them open Xcode Preferencs and click on the Text Editing tab, within that tab click Editing and then tick the Show Line Numbers check box.
+In the below documentation there will be refrences to line numbers within Xcode. By default line numbers are not shown in Xcode. To show them open Xcode Preferencs and click on the Text Editing tab, within that tab click Editing and then tick the Show Line Numbers check box.
 
 ### App Structure  
-
+---
 ![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/structure.png?raw=true)  
 
 ### Editing in Xcode
-
+---
 **Im only going to list some of the basic changes that can be made, to list everything would take a lot of documentation!**  
 
 Download and open the project in Xcode. The navigation pane on the left will list various files:
@@ -93,6 +93,13 @@ Edit ```let timerInt = TimeInterval(8.0)``` on line 212 change 8.0 to amount os 
 
 subclass of NSViewController. Used by the WebView  
 
+By default this is loading HTML content within the app. This can be changed to instead display a web page.  
+To change this first comment out ```let htmlPage = Bundle.main.url(forResource: "index", withExtension: "html")``` and ```webView.mainFrame.load(URLRequest(url: htmlPage!))``` on lines 36 & 37 by placing // infront of them.  
+
+You now need to remove the // from ```let url = NSURL (string: "https://tramscloud.co.uk")``` and  ```webView.mainFrame.load(URLRequest(url: url as! URL))``` on lines 40 & 41  
+
+Now just change the URL in ```let url = NSURL (string: "https://tramscloud.co.uk")``` on line 40  
+
 
 #### Stop cmd + q from quting the App   
 
@@ -100,8 +107,22 @@ We can use info.plist to make the application run as an agent. This stops is dis
 
 View info.plist and look for the 'Application is agent (UIElement)' property, change the value from NO to YES (is handy to have this set to NO while testing and debuging).  
 
+#### Compile the App  
+
 
 ### Usage with Jamf Pro  
+---
+Once you have customized and compiled the app it will need to packaged as a native Apple .pkg and uploaded to your Jamf distribution point(s).  
+
+##### Create policy to deploy and run the DEP-Enrolment app:  
+1. Create a policy with the 'Enrollment Complete' trigger  
+2. Add the DEP app package  
+3. scope to all computers or relivent smart group  
+4. Add either a command or a script (with priority of after), similar to: ```sudo -b /Library/Application\ Support/JAMF/DEP-Enrolment.app/Contents/MacOS/DEP-Enrolment``` This is just the path to executable within the app bundle (sudo and -b are reqiured)  
+
+This will download and run the the DEP- app as root POST Enrollment, you should see something similar to the below:  
+
+[alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)  
 
 
 

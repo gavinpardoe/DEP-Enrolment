@@ -11,7 +11,7 @@ DEP Enrolment Setup Screen
 
 Created with Xcode 8 and swift 3.0, Xcode 8 or higher needed. Wilst this may be uable with other MDM's it was created for use with Jamf Pro, recomend being on the latest version or at least within the last 3 releases of Jamf Pro.
 
-Tested and Support Clients:
+Tested and Supported Clients:
 
 10.11 (El Capitan)  
 10.12 (Sierra)
@@ -60,6 +60,7 @@ Edit ```window?.backgroundColor = NSColor.white``` on line 35 of MainViewControl
 Subclass of NSViewController & NSTextFieldDelegate. Used by the SourceView.  
 
 Add/ remove departments:  
+
 Edit ```department = ["Accounts", "Design", "Marketing", "Operations", "Sales", "Service"]``` on line 48 of SourceViewController.swift, change remove the department names within the quotes. You can add more entries just make sure to comma seperate them.  
 **Note that the departments must exist within departments in your Jamf server**  
 
@@ -71,6 +72,7 @@ Characters listed are allowed, anything not listed is restricted. CharaterSet ap
 
 Empty Text Fields:  
 If either text field is empty the app will not continue and an error message will be displayed, this will change the message in the error.  
+
 Edit ```alert.messageText = "Missing Text Field Values"``` and/or ```alert.informativeText = "All Text Fields Must be Populated"```  
 Change the text within the quotes.  
 

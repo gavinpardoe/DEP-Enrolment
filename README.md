@@ -39,13 +39,13 @@ The main files/ folders you will be working with are:
 *WebViewController* - Swift Class   
 *info.plist* - plist  
 
-##### HTML  
+#### HTML  
 
 Pretty simple just remove the exiting content in the HTML Folder and drag & drop your own. In the import wizard make sure that Copy Items is checked.  
 
 This is the contect that gets displayed in the WebView. It can also display hosted HTML content such a web pages, instead of using local content.  
 
-##### MainViewController  
+#### MainViewController  
 
 Subclass of NSWindowContoller. Used by MainWindow in the storyboard to set window size, level and apperance.  
 
@@ -55,7 +55,7 @@ Edit ```let percent: CGFloat = 1.0``` on line 40 of MainViewController.swift, wh
 To Change background colour:  
 Edit ```window?.backgroundColor = NSColor.white``` on line 35 of MainViewController.swift, where white = colour (Black, Blue, Red, etc)  
 
-##### SourceViewController  
+#### SourceViewController  
 
 Subclass of NSViewController & NSTextFieldDelegate. Used by the SourceView.  
 
@@ -74,7 +74,7 @@ If either text field is empty the app will not continue and an error message wil
 Edit ```alert.messageText = "Missing Text Field Values"``` and/or ```alert.informativeText = "All Text Fields Must be Populated"```  
 Change the text within the quotes.  
 
-##### SecondViewController  
+#### SecondViewController  
 
 subclass of NSViewController. Used by the SecondView  
 
@@ -87,17 +87,19 @@ How often policy receipts are checked, default is 8 seconds.
 
 Edit ```let timerInt = TimeInterval(8.0)``` on line 212 change 8.0 to amount os seconds reqiured.  
 
-##### WebViewController  
+#### WebViewController  
 
 subclass of NSViewController. Used by the WebView  
 
 
-##### Stop cmd + q from quting the App   
+#### Stop cmd + q from quting the App   
 
 We can use info.plist to make the application run as an agent. This stops is displaying in the dock or have a menu bar, which it very hard to close the app until its finished.  
 
 View info.plist and look for the 'Application is agent (UIElement)' property, change the value from NO to YES (is handy to have this set to NO while testing and debuging).  
 
+
+### Usage with Jamf Pro  
 
 
 

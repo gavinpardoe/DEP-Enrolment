@@ -122,7 +122,7 @@ Once you have customized and compiled the app it will need to packaged as a nati
 
 This will download and run the the DEP- app as root POST Enrollment, you should see something similar to the below:  
 
-[alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)  
+![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)  
 
 
 

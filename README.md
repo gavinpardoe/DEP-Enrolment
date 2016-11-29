@@ -111,9 +111,9 @@ Now just change the URL in ```let url = NSURL (string: "https://tramscloud.co.uk
 
 #### Stop cmd + q from quting the App   
 
-We can use info.plist to make the application run as an agent. This stops is displaying in the dock or have a menu bar, which it very hard to close the app until its finished.  
+We can use info.plist to make the application run as an agent. This stops is displaying in the dock or have a menu bar, which makes it very hard to close the app until its finished.  
 
-View info.plist and look for the 'Application is agent (UIElement)' property, change the value from NO to YES (is handy to have this set to NO while testing and debuging).  
+Select info.plist and look for the 'Application is agent (UIElement)' property, change the value from NO to YES (is handy to have this set to NO while testing and debuging).  
 
 #### Compile the App  
 

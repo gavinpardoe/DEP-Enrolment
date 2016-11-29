@@ -7,9 +7,9 @@ DEP Enrolment Setup Screen
 
 #### A Quick Walkthough of how it Works  
 
-1. Full screen splash is displayed allowing the user to enter there name, asset tag, choose a department and then begin the process (will not start if the text fields are left empty). This will scale to fit the screen size, will sit above all other windows and cannot be moved. cmd + q will quit the application but that changed and is explaned later on.  
+1. Full screen splash is displayed allowing the user to enter there name, asset tag, choose a department and then begin the process (will not start if the text fields are left empty). This will scale to fit the screen size, will sit above all other windows and cannot be moved. cmd + q will quit the application but that can be changed and is explaned later on.  
 2. Once the process has begun the user details will be submited to the Jamf server and a plist containing the details will be wirten to the "/Library/ Application Support/JAMF" folder. The view will also update (note the plist and user details submition happen as asynchronous background processes).  
-3. Once the new view has appeared and "jamf policy" will run with a custom event trigger (again this is a background process). The user will see some progress indicators that that will update with ticks once completed. There is also a status label that shows the last entry in the jamf.log (The method used for the status label is from [Jason Tratta](https://github.com/jason-tratta) )
+3. Once the new view has appeared a "jamf policy" will run with a custom event trigger (again this is a background process). The user will see some progress indicators that that will update with ticks once completed. There is also a status label that shows the last entry in the jamf.log (The method used for the status label is from [Jason Tratta](https://github.com/jason-tratta))
 4. Once the entire process has completed the view will update to indicate that everything has finished and a finish button is displayed.  
 5. Clicking the finish button will close the current window and open a smaller one (not full screen and movable) that can display web content or pages. The below image shows the views and windows:  
 

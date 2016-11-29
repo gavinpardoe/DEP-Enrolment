@@ -1,11 +1,19 @@
 # DEP-Enrolment
 DEP Enrolment Setup Screen
 
-### Description
+### Description & Overview  
 
-**A Setup/ Splash screen for DEP and user initiated Jamf Pro enrollments. Designed to run post enrollmnet. This is a template and although it does work as is you are most likley going to need make changes to better suit your requirements and enviroment.**
+**A Setup/ Splash screen for DEP and user initiated Jamf Pro enrollments. Designed to run post enrollmnet. This is a template and although it does work as is you are most likley going to need make changes to better suit your requirements and enviroment.**  
 
-![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)
+#### A Quick Walkthough of how it Works  
+
+1. Full screen splash is displayed allowing the user to enter there name, asset tag, choose a department and then begin the process (will not start if the text fields are left empty). This will scale to fit the screen size, will sit above all other windows and cannot be moved. cmd + q will quit the application but that changed and is explaned later on.  
+2. Once the process has begun the user details will be submited to the Jamf server and a plist containing the details will be wirten to the "/Library/ Application Support/JAMF" folder. The view will also update (note the plist and user details submition happen as asynchronous background processes).  
+3. Once the new view has appeared and "jamf policy" will run with a custom event trigger (again this is a background process). The user will see some progress indicators that that will update with ticks once completed. There is also a status label that shows the last entry in the jamf.log (The method used for the status label is from [Jason Tratta](https://github.com/jason-tratta) )
+4. Once the entire process has completed the view will update to indicate that everything has finished and a finish button is displayed.  
+5. Clicking the finish button will close the current window and open a smaller one (not full screen and movable) that can display web content or pages. The below image shows the views and windows:  
+
+![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/Overview.png?raw=true)
 
 ### Requirements
 ---
@@ -109,6 +117,11 @@ View info.plist and look for the 'Application is agent (UIElement)' property, ch
 
 #### Compile the App  
 
+To Compile an app:  
+1. With in Xcode click on the product menu and then click archive.  
+2. The archive window will show you a list of builds and highlight your current build.  
+3. On the right side of the window click the export button.  
+4. Select Export as a macOS App and click next then choose a location to save and click export.  
 
 ### Usage with Jamf Pro  
 ---
@@ -150,6 +163,10 @@ This can done using just a single policy or spread accorss multipule, its down t
   * J-OSXSecurityUpdate.pkg  
   * L-SecuritySettings.receipt.pkg (delivers the securitysettings receipt, which will cause the installation progress to update)  
 6. Add script with priortiy of after (could also be a command) with the following ```touch "/Library/Application Support/JAMF/DEPSetupComplete.receipt"``` this will create the final receipt and tell the DEP-Enrolment app that the process is complete.  
+
+Note: The receipts get cleaned once the finish button is pressed.  
+
+![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/InstallProgress.png?raw=true)  
 
 This is just one way of using this, with a little thought and effort this process could be imporved upon.  
 

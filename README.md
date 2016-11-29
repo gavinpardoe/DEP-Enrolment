@@ -114,7 +114,8 @@ View info.plist and look for the 'Application is agent (UIElement)' property, ch
 ---
 Once you have customized and compiled the app it will need to packaged as a native Apple .pkg and uploaded to your Jamf distribution point(s).  
 
-##### Create policy to deploy and run the DEP-Enrolment app:  
+##### Create Policy to Deploy and run the DEP-Enrolment App  
+
 1. Create a policy with the 'Enrollment Complete' trigger  
 2. Add the DEP app package  
 3. scope to all computers or relivent smart group  
@@ -124,5 +125,16 @@ This will download and run the the DEP- app as root POST Enrollment, you should 
 
 ![alt tag](https://github.com/gavinpardoe/DEP-Enrolment/blob/master/Screenshots/View%201.png?raw=true)  
 
+##### Create Policy(s) to Install and Configure  
 
+This can done using just a single policy or spread accorss multipule, its down to preferance and amount/ conplexitly of software & configuration. In this example im going to use a single policy to keep things simple.  
+
+1. Create a policy with the 'Custom' trigger. You can use any event name you like but by default the app will look for 'DEP'.  
+2. Scope to all or a relivent smart group.  
+3. We need to up date the installation progress screen during the installation, we do this using receipts. These receipts can be generated using scripts/ commands or delivered using packages. This example will use both.  
+4. I have broken down the installation progess into 4 sections (these of course can all be modified):  
+  * Applications  
+  * UI Settings  
+  * System Settings  
+  * Security Settings  
 

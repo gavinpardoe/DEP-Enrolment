@@ -132,9 +132,25 @@ This can done using just a single policy or spread accorss multipule, its down t
 1. Create a policy with the 'Custom' trigger. You can use any event name you like but by default the app will look for 'DEP'.  
 2. Scope to all or a relivent smart group.  
 3. We need to up date the installation progress screen during the installation, we do this using receipts. These receipts can be generated using scripts/ commands or delivered using packages. This example will use both.  
-4. I have broken down the installation progess into 4 sections (these of course can all be modified):  
+4. I have broken down the installation progess into 4 sections (these of course can all re-labled, if you just wanted to monitor apps you could change the labels to app names or developer names e.g. Adobe Applications):  
   * Applications  
   * UI Settings  
   * System Settings  
   * Security Settings  
+5. Add packages & receipts to the policy. They need to be order correctly, this can easly be done but putting numbers or letters at the start of the package name e.g. 1-,2- or A-,B-.  Similar to the below example:  
+  * A-InstallOffice2016.pkg  
+  * B-InstallSlack.pkg  
+  * C-InstallInDesign.pkg  
+  * D-Applications.receipt.pkg (delivers the applications receipt, which will cause the installation progress to update)  
+  * E-InstallWallpaper.pkg  
+  * F-UISettings.receipt.pkg (delivers the uisettings receipt, which will cause the installation progress to update)  
+  * G-InstallFonts.pkg  
+  * H-SystemSettings.receipt.pkg (delivers the systemsettings receipt, which will cause the installation progress to update)  
+  * I-InstallSophos.pkg  
+  * J-OSXSecurityUpdate.pkg  
+  * L-SecuritySettings.receipt.pkg (delivers the securitysettings receipt, which will cause the installation progress to update)  
+6. Add script with priortiy of after (could also be a command) with the following ```touch "/Library/Application Support/JAMF/DEPSetupComplete.receipt"``` this will create the final receipt and tell the DEP-Enrolment app that the process is complete.  
 
+This is just one way of using this, with a little thought and effort this process could be imporved upon.  
+
+  

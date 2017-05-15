@@ -51,7 +51,7 @@ The main files/ folders you will be working with are:
 
 Pretty simple just remove the exiting content in the HTML Folder and drag & drop your own. In the import wizard make sure that Copy Items is checked.  
 
-This is the contect that gets displayed in the WebView. It can also display hosted HTML content such a web pages, instead of using local content.  
+This is the content that gets displayed in the WebView. It can also display hosted HTML content such a web pages, instead of using local content.  
 
 #### MainViewController  
 
